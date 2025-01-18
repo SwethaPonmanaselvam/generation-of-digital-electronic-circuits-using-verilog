@@ -1,0 +1,17 @@
+module testbench;
+  reg [1:0]in;
+  reg sel;
+  wire y;
+  mux_2x1 uut (.in(in),.sel(sel),.y(y));
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    $monitor("in=0%b;sel=0%b,y=0%b",in,sel,y);
+     #10 in =2'b01;sel=0;
+     #10 in =2'b01;sel=1;
+              
+              
+   #50 $finish;
+    end
+    endmodule
+    
