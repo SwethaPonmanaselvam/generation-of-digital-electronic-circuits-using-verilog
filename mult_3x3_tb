@@ -1,0 +1,22 @@
+module mux_3x3;
+  reg [2:0] a, b;
+  wire [5:0] p;
+
+  mult_3x3 uut (
+    .a(a),
+    .b(b),
+    .p(p)
+  );
+
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+
+    // Initialize inputs with valid values
+    a = 3'b000; b = 3'b000; #10;
+    a = 3'b001; b = 3'b001; #10;
+    a=3'b100;b=3'b101;
+    #10
+    $finish;
+  end
+endmodule
