@@ -1,0 +1,26 @@
+module tb;
+  reg clk;
+  reg reset;
+  reg up_down;
+  wire [3:0] counter;
+
+  up_down_counter uut (
+    .clk(clk),
+    .reset(reset),
+    .up_down(up_down),
+    .counter(counter)
+  );
+  always #5 clk = ~clk;
+  initial begin
+    $dumpfile("dump.vcd"); 
+    $dumpvars;
+    clk = 0;
+    reset = 1;
+    #10 reset = 0; up_down = 1;
+    #100 up_down = 0;          
+    #50 reset = 1;             
+    #10 reset = 0;
+    #50 
+    $stop;                 
+  end
+endmodule
