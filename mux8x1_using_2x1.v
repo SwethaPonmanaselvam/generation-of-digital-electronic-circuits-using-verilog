@@ -9,9 +9,9 @@ module mux_2x1(
 endmodule
 
 module mux_8x1(
-  input wire [7:0] in,
-  input wire [2:0] sel,
-  output wire y
+  input [7:0] in,
+  input [2:0] sel,
+  output  y
 );
     wire w0, w1, w2, w3, w4, w5, w6;
     mux_2x1 m0(.in(in[1:0]), .sel(sel[0]), .y(w0));
