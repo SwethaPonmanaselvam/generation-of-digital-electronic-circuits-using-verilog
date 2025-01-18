@@ -1,0 +1,18 @@
+module tb;
+  reg t, clk;      
+ wire q, qn;       
+  t_flipflop uut(.t(t), .clk(clk), .q(q), .qn(qn));
+  initial begin
+    clk = 0;
+    forever #5 clk = ~clk;  
+  end
+  initial begin
+    $dumpfile("dump.vcd"); 
+    $dumpvars;      
+    t = 0; #10;                
+    t = 1; #10;            
+   t= 0; #10;             
+        #10 $finish;  
+  end
+endmodule
+
